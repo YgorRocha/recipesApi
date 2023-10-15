@@ -1,0 +1,57 @@
+import styled from "styled-components";
+
+export const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  overflow: hidden;
+
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 400px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+`;
+
+export const Header = styled.div`
+    color:white;
+    font-size: 35px;
+    font-weight:900;
+    letter-spacing: 1px;
+    padding-top:2rem;
+    text-shadow: 3px 6px rgba(50,50,70,0.7);
+    
+    
+`;
+
+export const Input = styled.input`
+  width: 400px;
+  background: linear-gradient(109.6deg, rgb(72, 200, 160) 11.2%, rgb(32, 40, 48) 91.3%);
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #CCCCCC;
+  border-radius: 15px;
+  outline: none;
+`;
+
+export const Button = styled.button`
+  margin-left: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+	background: #35bcbf; 
+  color: white;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(1.2);
+
+  }
+
+  margin-top: 20px;
+
+`;
