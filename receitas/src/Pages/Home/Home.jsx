@@ -6,7 +6,6 @@ import { Container } from "./style";
 export function Home() {
   const [search, setSearch] = useState('');
   const [myMeal, setMeal] = useState();
-  const [randomHome, setRandom] = useState("cake");
   const [showSuggestions, setSuggestions] = useState(true);
 
 
@@ -24,7 +23,7 @@ export function Home() {
   }
 
   const searchRandomMeals = () => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${randomHome}`)
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=`)
       .then((res) =>
         res.json().then((data) => {
           setMeal(data.meals);
