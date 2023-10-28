@@ -5,26 +5,57 @@ export const Container = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   overflow: hidden;
-
   @media (max-width: 960px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
   }
+
+  p{
+  color: white;
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding-top: 2rem;
+
+  grid-column: 2;
+  margin-right: 60px; 
+}
 
 `;
 
 export const Header = styled.div`
+    margin-top: 50px;
     color:white;
     font-size: 35px;
     font-weight:900;
     letter-spacing: 1px;
     padding-top:2rem;
     text-shadow: 3px 6px rgba(50,50,70,0.7);
-    
-    
+    height: 200px;
+  //
+  h2{
+    font-size: 40px;
+    text-shadow: none;
+    margin-top: 5px;
+  }
+  &::before {
+    content: "";
+    background-image: url("https://images.pexels.com/photos/7964669/pexels-photo-7964669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); // Defina a imagem de plano de fundo aqui    background-size: cover;
+    filter: blur(4px);
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+    bottom: 450px;
+    z-index: -1;
+  }
+
+  
+  
 `;
 
 export const Input = styled.input`
