@@ -7,9 +7,10 @@ export const Container = styled.div`
 `;
 
 export const Cards = styled.div`
-    min-width: clamp(200px, 300px, 400px);
+    min-width: clamp(150px, 250px, 400px);
     min-height: 510px; 
     margin: 1.5rem;
+    margin-top: 40px;
     padding-bottom: 10px;
     background: linear-gradient(to left,rgb(204, 255, 51,0.5),to left,rgb(255, 255, 255,0.9));
     border-radius: 8px;

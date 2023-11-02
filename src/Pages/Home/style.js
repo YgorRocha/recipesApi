@@ -9,19 +9,19 @@ export const Container = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
   }
 
   p{
   color: white;
-  font-size: 35px;
+  font-size: 40px;
   font-weight: 900;
   letter-spacing: 1px;
   padding-top: 2rem;
 
-  grid-column: 2; /* Isso faz com que o <p> comece na segunda coluna */
-  margin-right: 60px;
+  grid-column: 2;
+  margin-right: 60px; 
 }
 
 `;
@@ -30,12 +30,13 @@ export const Header = styled.div`
     margin-top: 50px;
     color:white;
     font-size: 35px;
+    transition: font-size 0.3s; /* Transição suave da fonte */
     font-weight:900;
     letter-spacing: 1px;
     padding-top:2rem;
     text-shadow: 3px 6px rgba(50,50,70,0.7);
     height: 200px;
-  //
+
   &::before {
     content: "";
     background-image: url("https://images.pexels.com/photos/7964669/pexels-photo-7964669.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); // Defina a imagem de plano de fundo aqui    background-size: cover;
@@ -48,6 +49,8 @@ export const Header = styled.div`
     bottom: 450px;
     z-index: -1;
   }
+
+  
   
 `;
 
@@ -59,7 +62,18 @@ export const Input = styled.input`
   border: 2px solid #CCCCCC;
   border-radius: 15px;
   outline: none;
+  @media (max-width: 800px) {
+    width: 300px; /* Largura para telas menores que 800px */
+  }
+
+  @media (max-width: 600px) {
+    width: 200px; /* Largura para telas menores que 600px */
+  }
+
+  transition: width 0.3s; /* Transição suave de largura */
 `;
+
+  
 
 export const Button = styled.button`
   margin-left: 5px;

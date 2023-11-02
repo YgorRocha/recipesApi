@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Mealitens } from "./mealItens";
-import { Header, Input, Button } from "./style";
+import { Header, Input, Button  } from "./style";
 import { Container } from "./style";
+import {Swiper, SwiperSlide} from "swiper/react"
+
 
 export function Home() {
   const [search, setSearch] = useState('');
-  const [myMeal, setMeal] = useState();
+  const [myMeal, setMeal] = useState([]);
+  const [randomMeals, setRandomMeals] = useState([]);
+  const [slidePreview, setSlidePreview] = useState(3);
 
   const searchMeal = (event) => {
     if (event.key === "Enter" || event.type === "click") {
@@ -18,18 +22,37 @@ export function Home() {
     }
   }
 
-  const searchRandomMeals = () => {
-    fetch("https://www.themealdb.com/api/json/v1/1/list.php?c=list")
+  const fetchRandomMeals = () => {
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=`)
       .then((res) =>
         res.json().then((data) => {
-          setMeal(data.meals);
+          setRandomMeals(data.meals);
         })
       );
   };
 
-  useEffect(() => {
-    searchRandomMeals();
-  }, []);
+      useEffect(() => {
+        fetchRandomMeals();
+      }, []);
+
+      useEffect(() => {
+        function handleResizer(){
+          if(window.innerWidth < 592){
+            setSlidePreview(1)
+          }else if(window.innerWidth < 810){
+            setSlidePreview(2)
+          }else{
+            setSlidePreview(3)
+          }
+        }
+        handleResizer();
+
+        window.addEventListener('resize', handleResizer)
+
+        return () => {
+          window.removeEventListener('resize', handleResizer)
+        };
+      }, []);
 
   return (
     <>
@@ -46,10 +69,24 @@ export function Home() {
       </Header>
 
       <Container>
-        {myMeal == null ? <p>Not found</p> : myMeal.map((res) => {
+        {myMeal == null  ? <p>Not found</p> : myMeal.map((res) => {
           return <Mealitens data={res} />;
         })}
       </Container>
-    </>
+
+      {myMeal === null || myMeal.length === 0 ? (
+      <Swiper
+        spaceBetween={1}
+        slidesPerView={slidePreview}
+        navigation
+      >
+        {myMeal == null  ? '' :  randomMeals.map((meal, index) => (
+          <SwiperSlide key={index}>
+            <Mealitens data={meal} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    ) : null}
+  </>
   )
 }
